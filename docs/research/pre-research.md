@@ -58,6 +58,26 @@
 최근이나 대표적인 취약점을 실제 도커로 재현. 누구나 접속해서 자유롭게 사용 가능한 워게임 사이트 제작
 
 * **결과물:** 분석 보고서 / 워게임 사이트 (vm instance 끄고 킬수 있는)
+---
+
+### 5. CAN Fuzzing 기반 취약 ECU 탐색기 
+CAN ID와 payload를 체계적으로 변형하면서 대상 ECU/가상 ECU의 비정상 상태를 탐색하는 퍼저를 제작. 단순 랜덤 fuzzing보다 state-aware fuzzing으로 발전 가능함.
+
+* **결과물:** CAN
+* **기타 메모:**
+  * ECU(Electronic Control Unit) : 자동차 내에서 하나 이상의 전기/하위 시스템을 제어하는 임베디드
+  * 차량의 원활한 제어를 위해 각 ECU 간의 통신이 필요
+  * 초기에는 랜덤/Mutation-based Fuzzing > 이후 정상 CAN 트래픽에서 메시지 구주와 ECU 상태 분석하여 현재 상태 적합한 입력을 생성하는 State-aware Fuzzing으로 확장
+  * Python/C++ 기반 퍼저
+  * HIL(Hardware-in-the-Loop) : 실제 제어기 하드웨어를 가상의 시뮬레이션 환경에 연결해 시스템을 검증하는 테스트 기법
+* **참고 링크:**
+  * [CAN 통신 관련 참고 개념](https://youngseong.tistory.com/336)
+  * [리눅스에서 CAN 연동 관련 문서](https://www.kernel.org/doc/html/latest/networking/can.html)
+  * [실차 없이 가상으로 테스트 가능한 오픈소스](https://github.com/zombieCraig/ICSim)
+  * [관련 연구 - state-aware CAN Fuzzing](https://www.mdpi.com/2673-4052/7/3/83)
+
+
+---
 
 
 
