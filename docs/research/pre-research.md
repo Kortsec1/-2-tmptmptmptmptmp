@@ -92,6 +92,28 @@ CAN ID와 payload를 체계적으로 변형하면서 대상 ECU/가상 ECU의 �
   * 가능하면 확장해서 변조 감지 발생하면 알림 + 안전한 최신 Commit SHA로 워크 플로우 파일  자동 수정하여 Pull Request를 생성하는 기능까지 구현해보기
   * **참고 링크:**
 
+---
+
+### 7. Blue Team 사이버 공격 탐지 실습 플랫폼 설계 및 구현
+기존 워게임: 공격해서 Flag를 획득하는 것이 끝. 여기서 끝나지 않고, 이미 공격당한 시스템의 PCAP, 로그, 악성 파일 등을 주고 사용자가 공격 과정을 밝혀낸 뒤 Snort와 YARA 룰을 직접 작성하고, 숨겨진 데이터셋(임의로 구성해놓은)을 통해 실제로 얼마나 잘 탐지하는지 평가하는 Blue Team 입장 워게임.
+
+* **결과물:** Blue Team 워게임 플랫폼 (엄밀히 말하면 Detection Engineering Lab)
+* **기타 메모:**
+  * 검증 Dataset을 설정해서, 특정 침해를 하드코딩하는것을 방지.
+  * 너무 많은 증거 X > 타임라인을 사용자가 직접 분석할 수 있게
+  * 특정 IP 기반 룰 지양
+  * 2~3개 정도의 구체적인 / 정확한 시나리오 제작에 집중.
+  * Red Team 플랫폼, AI 자동 룰 생성, SIEM 구축, EDR 개발 등 너무 처음부터 과한 개념을 잡지 않고, "Incident > Investigate > Detect > Validate" 수준의 핵심 과정에 집중
+  * alert tcp any any -> any any 와 같은 false positive 고려해야 함.
+* **참고 링크:**
+  * [Snort 룰 작성 가이드](https://docs.snort.org/intro)
+  * [YARA 룰 작성 가이드](https://yara.readthedocs.io/en/latest/writingrules.html)
+  * [구체적인 시나리오 제작 시 참고](https://attack.mitre.org/)
+  * [실제 침해사고 pcap 공유 페이지](https://malware-traffic-analysis.net/)
+  * [관련 연구 - Defender가 실습할 수 있는 환경](https://github.com/clong/detectionlab)
+
+
+---
 
 
 
